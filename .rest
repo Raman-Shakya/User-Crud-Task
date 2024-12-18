@@ -1,0 +1,28 @@
+GET http://localhost:3000
+###
+
+POST http://localhost:3000
+Content-Type: application/json
+
+{
+    "userName": "Raman Shakya",
+    "password": "SDjalsdjiosaidjaskld#@KLJIjioDJSJ#$EKJLSKdksa"
+}
+###
+
+PUT http://localhost:3000/reset-password
+Content-Type: application/json
+
+{
+    "userName": "Raman Shakya",
+    "password": "checking"
+}
+
+###
+DELETE http://localhost:3000/remove
+Content-Type: application/json
+
+{
+    "userName": "Raman Shakya",
+    "password": "checking"
+}
