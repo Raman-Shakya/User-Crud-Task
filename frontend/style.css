@@ -1,6 +1,7 @@
 :root {
     --background-color: #ececec;
     --card-color: #fafafa;
+    --dark-color: #777777;
 }
 
 .card {
@@ -35,7 +36,8 @@ body {
 
 /* MAIN USER PAGE */
 .main {
-    margin: 100px;
+    width: 500px;
+    margin: 3em auto;
 }
 .user-name-field {
     font-weight: bold;
@@ -48,4 +50,16 @@ body {
 }
 .modal-body.card div {
     margin: 10px 0;
+}
+
+.navbar {
+    padding: 1em 3em;
+    border-bottom: 1px solid black;
+}
+.navbar h2 {
+    font-size: 25px;
+    margin: 0;
+}
+.navbar h2 span {
+    color: var(--dark-color);
 }

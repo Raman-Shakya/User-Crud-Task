@@ -15,14 +15,12 @@ function login(e) {
     axios({
         method: "post",
         url: backendURL + "/login",
-        // withCredentials: true,
+        withCredentials: true,
         data: {
             userName, password
         }
     })
         .then((response) => {
-            document.cookie = response.data;
-            localStorage.setItem('loginToken', response.data);
             window.location.href = '../../';
         })
         .catch((error) => {

@@ -8,30 +8,27 @@ function main() {
 function getData() {
     axios({
         method: 'get',
+        withCredentials: true,
         url: backendURL
     })
         .then((response) => {
-            renderTable(response.data);
+            renderTable(response.data.data);
+            $('.user-name-greeting').text(response.data.currentUser);
         })
         .catch((err) => {
-            console.log(err);
+            window.location.href = "./auth/register";
         })
 }
 
 function renderTable(data) {
-    const table = $('.user-table');
-    $('.user-table tr').remove();
-    $('.user-table').append(
-        `<tr>
-            <th>userName</th>
-            <th>password</th>
-        </tr>`
-    );
+    const table = $('.user-table .user-container');
+    $('.user-table .user-container tr').remove();
+    
     data.forEach(element => {
         const row = $('<tr></tr>');
         const userName = $('<td></td>').text(element.userName);
-        const password = $('<td></td>').text(element.password);
-        row.append(userName, password);
+        // const password = $('<td></td>').text(element.password);
+        row.append(userName);
         table.append(row);
 
         row.click(() => {
@@ -43,7 +40,6 @@ function renderTable(data) {
 function showModal(user) {
     $('.user-name-field').text(user.userName);
     $('#user-modal').modal('show');
-    console.log("clicking")
 }
 
 function deleteUser() {
@@ -56,6 +52,7 @@ function deleteUser() {
     axios({
         method: 'delete',
         url: backendURL + '/remove',
+        withCredentials: true,
         data: {
             userName: userName, password: password
         }

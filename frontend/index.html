@@ -20,16 +20,20 @@
 </head>
 <body>
     <nav class="navbar bg-body-tertiary">
-        <p>Welcome</p>
-        <a class="btn btn-primary" href="./auth/register">SignUp</a>        
+        <h2>Welcome <span class="user-name-greeting"></span></h2>
+        <a class="btn btn-primary" href="./auth/register">Add User</a>        
     </nav>
     <main class="main">
         <h2>Registered Users</h2>
         <table class="user-table table table-hover">
-            <tr>
-                <th>userName</th>
-                <th>password</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>userName</th>
+                    <!-- <th>password</th> -->
+                </tr>
+            </thead>
+            <tbody class="user-container">
+            </tbody>
         </table>
     </main>
 

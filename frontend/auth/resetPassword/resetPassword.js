@@ -11,7 +11,7 @@ function resetPassword(e) {
     const oldPassword = $('.old-password').val();
     const newPassword = $('.new-password').val();
 
-    if (!(userName && oldPassword && newPassword)) return;
+    if (!(userName && oldPassword && newPassword)) return alert("Enter all fields.");
 
     axios.put(backendURL + "/reset-password",
         {
