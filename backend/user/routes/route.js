@@ -1,10 +1,11 @@
 const express = require('express');
-const [getUsers, addUsers, changePassword, removeUser] = require('../controller/controller');
+const [getUsers, login, addUsers, changePassword, removeUser] = require('../controller/controller');
 
 const router = express.Router();
 
 router.get('/', getUsers);
 router.post('/', addUsers);
+router.post('/login', login);
 router.put('/reset-password', changePassword);
 router.delete('/remove', removeUser);
 

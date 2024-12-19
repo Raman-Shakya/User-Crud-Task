@@ -16,12 +16,14 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <form class="card">
-        <input type="text" class="form-control" placeholder="user name">
-        <input type="password" class="form-control" placeholder="password">
-        <input type="password" class="form-control" placeholder="confirm password">
-        <p>Forgot your password? <a href="./resetPassword.html">reset</a></p>
+    <form class="card" id="register-user-form">
+        <input type="text" class="form-control user-name" placeholder="user name">
+        <input type="password" class="form-control password" placeholder="password">
+        <input type="password" class="form-control confirm-password" placeholder="confirm password">
+        <p>Forgot your password? <a href="../resetPassword">reset</a></p>
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
+
+    <script src="./register.js"></script>
 </body>
 </html>

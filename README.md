@@ -22,6 +22,9 @@ List of APIs:
 2. POST `/user`
     Adds a new user given `userName` and `password` in the **POST** request body
 
+3. POST `/login`
+    Logs in given `userName` and `password` in the **POST** request body and returns a JWT token
+
 3. PUT `/user/reset-password`
     Resets a password of a given user by specifying `userName` and `password` field in the **PUT** request body
 
