@@ -14,26 +14,42 @@
 
     <!-- AXIOS CDN IMPORT -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- custom styles -->
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="main">
+    <nav class="navbar bg-body-tertiary">
+        <p>Welcome</p>
+        <a class="btn btn-primary" href="./auth/register">SignUp</a>        
+    </nav>
+    <main class="main">
+        <h2>Registered Users</h2>
         <table class="user-table table table-hover">
             <tr>
-                <!-- <th>id</th> -->
                 <th>userName</th>
                 <th>password</th>
             </tr>
         </table>
-    </div>
+    </main>
 
     <div class="modal" id="user-modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">User Details</h5>
+                    <h5 class="modal-title">Delete this user</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body user-name-field">
+                <div class="modal-body card">
+                    <div>
+                        UserName: 
+                        <span class="user-name-field"></span>
+                    </div>
+                    <div>
+                        Password: 
+                        <input type="password" class="form-control password-field" placeholder="password">
+                    </div>
+                    <button class="btn btn-primary delete-user-button">delete</button>
                 </div>
             </div>
         </div>

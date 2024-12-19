@@ -2,6 +2,7 @@ const backendURL = 'http://localhost:3000'
 
 function main() {
     getData();
+    $('.delete-user-button').click(deleteUser);
 }
 
 function getData() {
@@ -18,8 +19,14 @@ function getData() {
 }
 
 function renderTable(data) {
-    console.log(data);
     const table = $('.user-table');
+    $('.user-table tr').remove();
+    $('.user-table').append(
+        `<tr>
+            <th>userName</th>
+            <th>password</th>
+        </tr>`
+    );
     data.forEach(element => {
         const row = $('<tr></tr>');
         const userName = $('<td></td>').text(element.userName);
@@ -30,8 +37,6 @@ function renderTable(data) {
         row.click(() => {
             showModal(element);
         })
-
-        console.log(row);
     });
 }
 
@@ -40,5 +45,34 @@ function showModal(user) {
     $('#user-modal').modal('show');
     console.log("clicking")
 }
+
+function deleteUser() {
+    const userName = $('.user-name-field').text();
+    const password = $('.password-field').val();
+    console.log(userName, password);
+    
+    if (!(userName && password)) return alert("Enter password");
+
+    axios({
+        method: 'delete',
+        url: backendURL + '/remove',
+        data: {
+            userName: userName, password: password
+        }
+    })
+        .then((response) => {
+            console.log(response);
+            if (response.data.deletedCount==1) {
+                $('#user-modal').modal('hide');
+                getData();
+                return;
+            }
+            alert("Incorrect UserName or Password");
+        })
+        .catch((err) => {
+            alert("Something went wrong, please try again later");
+        })
+}
+
 
 $(document).ready(main)

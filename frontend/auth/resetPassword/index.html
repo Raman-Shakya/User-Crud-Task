@@ -14,12 +14,17 @@
 
     <!-- AXIOS CDN IMPORT -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+    <!-- custom styles -->
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
     <form class="card" id="reset-password-form">
+        <h2>Reset Password</h2>
         <input type="text" class="form-control user-name" id="user-name-input" placeholder="user name">
         <input type="password" class="form-control old-password" id="old-password-input" placeholder="old password">
         <input type="password" class="form-control new-password" id="new-password-input" placeholder="new password">
+        <p>Already have an account? <a href="../login">login</a></p>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 

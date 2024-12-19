@@ -10,12 +10,12 @@ function login(e) {
     const userName = $('.user-name').val();
     const password = $('.password').val();
 
-    if (!(userName && password)) return;
+    if (!(userName && password)) return alert("Both fields are required.");
 
     axios({
         method: "post",
         url: backendURL + "/login",
-        withCredentials: true,
+        // withCredentials: true,
         data: {
             userName, password
         }
@@ -23,10 +23,10 @@ function login(e) {
         .then((response) => {
             document.cookie = response.data;
             localStorage.setItem('loginToken', response.data);
-            console.log(document.cookie);
+            window.location.href = '../../';
         })
         .catch((error) => {
-            console.error(error);
+            alert("Invalid credentials");
         })
 
     return false;

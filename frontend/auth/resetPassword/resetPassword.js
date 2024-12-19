@@ -19,10 +19,14 @@ function resetPassword(e) {
         }
     )
         .then((response) => {
-            console.log(response);
+            if (response.data.modifiedCount == 1) {
+                window.location.href = '../../';
+                return;
+            }
+            alert("Incorrect password.");
         })
         .catch((error) => {
-            console.error(error);
+            alert("Something went wrong, please try again later.");
         })
 
     return false;

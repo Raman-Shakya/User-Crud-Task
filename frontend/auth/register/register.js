@@ -11,8 +11,8 @@ function registerUser(e) {
     const password = $('.password').val();
     const confirmPassword = $('.confirm-password').val();
 
+    if (!(userName && password && confirmPassword)) return alert("Fill all fields");
     if (password !== confirmPassword) return alert("Password doesn't match confirm password");
-    if (!(userName && password && confirmPassword)) return;
 
     axios.post(backendURL,
         {
@@ -20,10 +20,10 @@ function registerUser(e) {
         }
     )
         .then((response) => {
-            console.log(response);
+            window.location.href = "../login"
         })
         .catch((error) => {
-            console.error(error);
+            alert("Something went wrong, please try again later.");
         })
 
     return false;
