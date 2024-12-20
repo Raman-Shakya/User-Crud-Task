@@ -1,9 +1,9 @@
-const backendURL = "http://localhost:3000"
-
+//  -------- onsubmit event listener for register-user-form
 $('#register-user-form').submit((e) => {
     registerUser(e);
 })
 
+// ---------------------------================================================= Register User API
 function registerUser(e) {
     e.preventDefault();
 

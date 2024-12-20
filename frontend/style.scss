@@ -1,0 +1,65 @@
+$background-color: #ececec;
+$card-color: #fafafa;
+$dark-color: #777777;
+
+.card {
+    width: 400px;
+    margin: 10em auto;
+    padding: 2em;
+    background-color: $card-color;
+
+    h2 {
+        margin: 1em 0;
+    }
+    
+    p {
+        margin: 0;
+        font-size: 0.9em;
+    }
+    
+    .btn {
+        margin: 1em 0;
+    }
+    
+    .form-control {
+        margin: 0.5em 0;
+    }
+}
+
+
+body {
+    background: $background-color;
+}
+
+
+
+/* MAIN USER PAGE */
+.main-card {
+    width: 500px;
+    min-height: 70vh;
+    margin: 3em auto;
+}
+.user-name-field {
+    font-weight: bold;
+}
+.modal {
+    margin-top: 200px;
+    .modal-body.card {
+        margin: 50px auto;
+        div {
+            margin: 10px 0;
+        }
+    }
+}
+
+.navbar {
+    padding: 1em 3em;
+    border-bottom: 1px solid black;
+    h2 {
+        font-size: 25px;
+        margin: 0;
+    }
+    span {
+        color: var(--dark-color);
+    }
+}

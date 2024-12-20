@@ -1,15 +1,16 @@
-const backendURL = "http://localhost:3000"
-
+//  -------- onsubmit event listener for login-form
 $('#login-form').submit((e) => {
     login(e);
 })
 
+// ---------------------------================================================= Login User API
 function login(e) {
     e.preventDefault();
     
     const userName = $('.user-name').val();
     const password = $('.password').val();
 
+    // if any field is mising, terminate
     if (!(userName && password)) return alert("Both fields are required.");
 
     axios({

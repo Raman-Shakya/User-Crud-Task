@@ -1,10 +1,31 @@
 const userModel = require('../model/model');
-const { signToken, validateToken } = require('../tools');
+const { signToken, validateToken } = require('../jwtTools');
 
 // get all user records
-const getUsers = (req, res) => {
-    userModel.find()
-        .then((r) => res.send(r))
+const getUsers = async (req, res) => {
+    if (!req.cookies.token) return res.status(401).send("Unauthorized access");
+    var userName;
+    try {
+        userName = await validateToken(req.cookies.token);
+        if (!userName) return res.status(403).send("Forbidden action");
+    }
+    catch (error) {
+        return res.status(401).send("Invalid User");
+    }
+    
+    userModel.find({}, 'userName')
+        .then((r) => {
+            if (r.map((record) => record.userName).includes(userName))
+                return res.send({ data: r, currentUser: userName })
+            res.cookie("token", "", {
+                path: '/',
+                maxAge: 3600000,
+                sameSite: "None",
+                httpOnly: true,
+                secure: true
+            });
+            res.status(401).send("Invalid User");
+        })
         .catch((e) => res.status(404).send("Data not found" + e));
 }
 
@@ -16,7 +37,16 @@ const login = (req, res) => {
         .then((response) => {
             if (response.length == 0) return res.status(403).send("Forbidden action");
             // user has been authorized
-            res.send(`loginToken=${signToken(response[0].userName)}; path=/; SameSite=Lax; `);
+            const token = signToken(response[0].userName);
+            res.cookie("token", token, {
+                path: '/',
+                maxAge: 3600000,
+                sameSite: "None",
+                httpOnly: true,
+                secure: true
+            });
+            // res.send(`loginToken=${signToken(response[0].userName)}; path=/; `);
+            res.send("auth cookie sent");
         })
         .catch((err) => {
             console.log(err);
@@ -36,8 +66,21 @@ const addUser = (req, res) => {
 }
 
 // update password for given user
-const changePassword = (req, res) => {
-    const { userName, oldPassword, newPassword } = req.body;
+const changePassword = async (req, res) => {
+    if (!req.cookies.token) return res.status(401).send("Unauthorized access");
+    const { oldPassword, newPassword } = req.body;
+    if (!(oldPassword && newPassword) || (oldPassword == newPassword))
+        return res.status(401).send("Incomplete Informations");
+
+    var userName;
+    try {
+        userName = await validateToken(req.cookies.token);
+        if (!userName) return res.status(403).send("Forbidden action");
+    }
+    catch (error) {
+        return res.status(401).send("Invalid User");
+    }
+
     userModel.updateOne({
         userName: userName,
         password: oldPassword

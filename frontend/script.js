@@ -1,10 +1,12 @@
-const backendURL = 'http://localhost:3000'
 
+// ================== RUN ON START ===================== //
 function main() {
     getData();
     $('.delete-user-button').click(deleteUser);
 }
 
+// ----------------------------------===================================================== API REQUEST FUNCTIONS
+//// -----------------------------========================================= get users api
 function getData() {
     axios({
         method: 'get',
@@ -20,28 +22,7 @@ function getData() {
         })
 }
 
-function renderTable(data) {
-    const table = $('.user-table .user-container');
-    $('.user-table .user-container tr').remove();
-    
-    data.forEach(element => {
-        const row = $('<tr></tr>');
-        const userName = $('<td></td>').text(element.userName);
-        // const password = $('<td></td>').text(element.password);
-        row.append(userName);
-        table.append(row);
-
-        row.click(() => {
-            showModal(element);
-        })
-    });
-}
-
-function showModal(user) {
-    $('.user-name-field').text(user.userName);
-    $('#user-modal').modal('show');
-}
-
+//// -----------------------------========================================== delete users api
 function deleteUser() {
     const userName = $('.user-name-field').text();
     const password = $('.password-field').val();
@@ -60,7 +41,7 @@ function deleteUser() {
         .then((response) => {
             console.log(response);
             if (response.data.deletedCount==1) {
-                $('#user-modal').modal('hide');
+                hideModal();
                 getData();
                 return;
             }
@@ -69,6 +50,33 @@ function deleteUser() {
         .catch((err) => {
             alert("Something went wrong, please try again later");
         })
+}
+
+// -----------------------------------------================================================== Construct and show table
+function renderTable(data) {
+    const table = $('.user-table .user-container');
+    $('.user-table .user-container tr').remove();
+    
+    data.forEach(element => {
+        const row = $('<tr></tr>');
+        const userName = $('<td></td>').text(element.userName);
+        // const password = $('<td></td>').text(element.password);
+        row.append(userName);
+        table.append(row);
+
+        row.click(() => {
+            showModal(element);
+        })
+    });
+}
+
+//-----------------------------==============================================================  Modal functions
+function showModal(user) {
+    $('.user-name-field').text(user.userName);
+    $('#user-modal').modal('show');
+}
+function hideModal() {
+    $('#user-modal').modal('hide');
 }
 
 

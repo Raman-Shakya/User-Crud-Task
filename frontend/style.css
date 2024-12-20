@@ -1,65 +1,56 @@
-:root {
-    --background-color: #ececec;
-    --card-color: #fafafa;
-    --dark-color: #777777;
-}
-
 .card {
-    width: 400px;
-    margin: 10em auto;
-    padding: 2em;
-    background-color: var(--card-color);
+  width: 400px;
+  margin: 10em auto;
+  padding: 2em;
+  background-color: #fafafa;
 }
-
 .card h2 {
-    margin: 1em 0;
+  margin: 1em 0;
 }
-
 .card p {
-    margin: 0;
-    font-size: 0.9em;
+  margin: 0;
+  font-size: 0.9em;
 }
-
 .card .btn {
-    margin: 1em 0;
+  margin: 1em 0;
 }
-
 .card .form-control {
-    margin: 0.5em 0;
+  margin: 0.5em 0;
 }
 
 body {
-    background: var(--background-color);
+  background: #ececec;
 }
-
-
 
 /* MAIN USER PAGE */
-.main {
-    width: 500px;
-    margin: 3em auto;
+.main-card {
+  width: 500px;
+  min-height: 70vh;
+  margin: 3em auto;
 }
+
 .user-name-field {
-    font-weight: bold;
+  font-weight: bold;
 }
+
 .modal {
-    margin-top: 200px;
+  margin-top: 200px;
 }
-.modal-body.card {
-    margin: 50px auto;
+.modal .modal-body.card {
+  margin: 50px auto;
 }
-.modal-body.card div {
-    margin: 10px 0;
+.modal .modal-body.card div {
+  margin: 10px 0;
 }
 
 .navbar {
-    padding: 1em 3em;
-    border-bottom: 1px solid black;
+  padding: 1em 3em;
+  border-bottom: 1px solid black;
 }
 .navbar h2 {
-    font-size: 25px;
-    margin: 0;
+  font-size: 25px;
+  margin: 0;
 }
-.navbar h2 span {
-    color: var(--dark-color);
-}
+.navbar span {
+  color: var(--dark-color);
+}/*# sourceMappingURL=style.css.map */
