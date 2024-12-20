@@ -12,7 +12,7 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(cookieParser());
-app.use(userRoutes);
+app.use('/user', userRoutes);
 
 
 app.listen(PORT, (e) => {

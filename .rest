@@ -1,7 +1,7 @@
-GET http://localhost:3000
+GET http://localhost:3000/user
 ###
 
-POST http://localhost:3000/login
+POST http://localhost:3000/user/login
 Content-Type: application/json
 
 {
@@ -11,7 +11,7 @@ Content-Type: application/json
 
 
 ###
-POST http://localhost:3000
+POST http://localhost:3000/user
 Content-Type: application/json
 
 {
@@ -20,7 +20,7 @@ Content-Type: application/json
 }
 ###
 
-PUT http://localhost:3000/reset-password
+PUT http://localhost:3000/user/reset-password
 Content-Type: application/json
 
 {
@@ -29,7 +29,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/remove
+DELETE http://localhost:3000/user/remove
 Content-Type: application/json
 
 {
