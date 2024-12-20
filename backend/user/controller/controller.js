@@ -61,7 +61,19 @@ const addUser = (req, res) => {
         userName,
         password
     })
-        .then((r) => res.json(r))
+        .then((response) => {
+            if (Object.keys(response).length == 0) return res.status(403).send("Forbidden action");
+            // user has been authorized
+            const token = signToken(userName);
+            res.cookie("token", token, {
+                path: '/',
+                maxAge: 3600000,
+                sameSite: "None",
+                httpOnly: true,
+                secure: true
+            });
+            res.json(response);
+        })
         .catch((e) => res.status(403).send("Error" + e));
 }
 

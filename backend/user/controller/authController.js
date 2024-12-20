@@ -6,7 +6,7 @@ const isAuthenticated = async(req, res) => {
     try {
         userName = await validateToken(req.cookies.token);
         if (!userName) return res.status(403).send("Forbidden action");
-        return res.send(true);
+        return res.send(userName);
     }
     catch (error) {
         return res.status(401).send("Invalid User");

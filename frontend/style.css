@@ -20,12 +20,15 @@
 
 body {
   background: #ececec;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* MAIN USER PAGE */
 .main-card {
-  width: 500px;
-  min-height: 70vh;
+  flex: 1;
+  width: min(90%, 500px);
   margin: 3em auto;
 }
 
@@ -52,5 +55,15 @@ body {
   margin: 0;
 }
 .navbar span {
-  color: var(--dark-color);
+  color: #777777;
+}
+
+footer {
+  text-align: center;
+  border-top: 1px solid #777777;
+  color: #777777;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  padding: 0.5em 1em;
 }/*# sourceMappingURL=style.css.map */
